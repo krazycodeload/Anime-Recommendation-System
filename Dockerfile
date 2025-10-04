@@ -1,28 +1,27 @@
+## Parent image
 FROM python:3.10-slim
 
+## Essential environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
+## Work directory inside the docker container
 WORKDIR /app
 
+## Installing system dependancies
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
-    gcc \
-    libffi-dev \
-    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install uv and move it to a global path
-RUN curl -Ls https://astral.sh/uv/install.sh | sh && \
-    mv /root/.cargo/bin/uv /usr/local/bin/uv
-
-# Copy project files
+## Copying ur all contents from local to app
 COPY . .
 
-# Install Python dependencies
-RUN uv pip install -r requirements.txt
+## Run setup.py
+RUN pip install --no-cache-dir -e .
 
+# Used PORTS
 EXPOSE 8501
 
-CMD ["streamlit", "run", "app/app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
+# Run the app 
+CMD ["streamlit", "run", "app/app.py", "--server.port=8501", "--server.address=0.0.0.0","--server.headless=true"]
