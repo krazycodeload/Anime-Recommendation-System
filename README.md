@@ -132,7 +132,7 @@
 
 ```bash
 git config --global user.email "kaushalk94114@gmail.com"
-git config --global user.name "krazycodeload"
+git config --global user.name "codelord"
 
 git add .
 git commit -m "commit"
