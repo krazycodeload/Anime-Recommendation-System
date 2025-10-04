@@ -132,7 +132,7 @@
 
 ```bash
 git config --global user.email "kaushalk94114@gmail.com"
-git config --global user.name "codelord"
+git config --global user.name "krazycodeload"
 
 git add .
 git commit -m "commit"
@@ -140,7 +140,7 @@ git push origin main
 ```
 
 - When prompted:
-  - **Username**: `codelord`
+  - **Username**: `krazycodeload`
   - **Password**: GitHub token (paste, it's invisible)
 
 ---
