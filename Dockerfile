@@ -12,7 +12,17 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
+    gcc \
+    libffi-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
+
+
+# Install uv
+RUN curl -Ls https://astral.sh/uv/install.sh | sh
+
+# Add uv to PATH (it installs to /root/.cargo/bin)
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 ## Copying ur all contents from local to app
 COPY . .
