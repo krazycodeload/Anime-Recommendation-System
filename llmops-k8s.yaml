@@ -14,23 +14,13 @@ spec:
       labels:
         app: llmops
     spec:
-      automountServiceAccountToken: false
       containers:
-       - name: llmops-container
-         image: llmops-app:v1.0.0  # Use specific version tag
-         imagePullPolicy: IfNotPresent
-         ports:
-           - containerPort: 8501
-         resources:
-           requests:
-             cpu: "100m"
-             memory: "128Mi"
-             ephemeral-storage: "512Mi"
-           limits:
-             cpu: "500m"
-             memory: "512Mi"
-             ephemeral-storage: "1Gi"
-      envFrom:
+      - name: llmops-container
+        image: llmops-app:latest  # Use local image
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8501
+        envFrom:
           - secretRef:
               name: llmops-secrets 
 
