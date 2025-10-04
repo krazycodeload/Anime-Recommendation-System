@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
 COPY . .
 
 ## Run setup.py
-RUN pip install --no-cache-dir -e .
+# RUN pip install --no-cache-dir -e .
+RUN uv pip install -r requirements.txt
 
 # Used PORTS
 EXPOSE 8501
